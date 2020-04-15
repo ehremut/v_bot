@@ -1,2 +1,2 @@
-# v_bot
-v_bot
+# Bot VK
+Bot to select a topic for debate.
