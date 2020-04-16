@@ -5,13 +5,13 @@ from vk_api.longpoll import VkLongPoll
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-credentials_file = 'My First Project-9cc0f18cb40c.json'
+credentials_file = '' # generate from google api
 credentials = ServiceAccountCredentials.from_json_keyfile_name(
     credentials_file, ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'])
 client = gspread.authorize(credentials)
 
 
-vk = vk_api.VkApi(token="992c5a9a356e8e29c1e8deb89d17ddb8a1497626f4ba1837bc701a14c0814efeac852e784cfcdf664c2a1")
+vk = vk_api.VkApi(token=" ") # get from Vk public
 vk._auth_token()
 vk.get_api()
 longpoll = VkLongPoll(vk)
