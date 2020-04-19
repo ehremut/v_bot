@@ -13,6 +13,8 @@ class VkBot():
         self.steps = {1: False, 2: False, 3: False, 4: False, 5: False}
 
     def message(self,response,keyboard):
+        themes = ['социальная сфера', 'политика', 'экономика', 'наркотики', 'феминизм', 'международные отношения', \
+                  'спорт', 'сми', 'мигранты', 'религия', 'этика']
         if response == "поехали" or response == "заново":
             self.send = {'lang': '', 'level': '', 'format': '', 'discus': ''}
             self.steps = {1: False, 2: False, 3: False, 4: False, 5: False}
@@ -64,9 +66,32 @@ class VkBot():
             else:
                 return( 'user_id', self.user_id, 'Много просить нельзя, у тебя же есть кнопочки, \
                                                             пользуйся\nЕсли хочешь начать заново, то напиши заново')
-        elif response == 'жми далее братишка':  # было "социалочка"
+        elif response in themes:  # было "социалочка"
             if self.steps[1] == True and self.steps[2] == True and self.steps[3] == True and self.steps[4] == False:
                 self.steps[4] = True
+
+                if response == themes[0]:
+                    self.send['discus'] = 'soc'
+                elif response == themes[1]:
+                    self.send['discus'] = 'polit'
+                elif response == themes[2]:
+                    self.send['discus'] = 'econ'
+                elif response == themes[3]:
+                    self.send['discus'] = 'narco'
+                elif response == themes[4]:
+                    self.send['discus'] = 'fem'
+                elif response == themes[5]:
+                    self.send['discus'] = 'inter'
+                elif response == themes[6]:
+                    self.send['discus'] = 'sport'
+                elif response == themes[7]:
+                    self.send['discus'] = 'media'
+                elif response == themes[8]:
+                    self.send['discus'] = 'migr'
+                elif response == themes[9]:
+                    self.send['discus'] = 'relig'
+                elif response == themes[10]:
+                    self.send['discus'] = 'ethics'
                 # здесь будет добавление в словарь тэга "сфера дискуссии"
                 return( 'user_id', self.user_id, 'Выбери формат', keyboard)
             else:
@@ -99,10 +124,15 @@ class VkBot():
             else:
                 return( 'user_id', self.user_id, 'Много просить нельзя, у тебя же есть кнопочки, \
                                                             пользуйся\nЕсли хочешь начать заново, то напиши заново')
+        # elif response == 'закрыть':
+        #     return ('user_id', self.user_id, 'Закрыть', keyboard)
+
+
+
         else:
             return ('user_id', self.user_id, 'Мне нечего тебе на это ответить\n \
                                              Пользуйся кнопочками, они для тебя\n \
-                                            Если хочешь начать заново, то напиши поехали')
+                                            Если хочешь найти тему, то напиши поехали')
 
     def get_theme(self, send):
         client = MongoClient("mongodb://127.0.0.1:27017")
@@ -113,10 +143,11 @@ class VkBot():
         for i in send.items():
             if i[1] != '':
                 ss[i[0]] = i[1]
+        print(ss)
         col = col.find(ss)
         for i in col:
             t_list.append(i['name'])
-        if len(list) != 0:
+        if len(t_list) != 0:
             res = random.choice(t_list)
         else:
             res = 'К сожалению таких тем нет'
