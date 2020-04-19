@@ -17,7 +17,7 @@ def send_message(vk, id_type, id, message=None, keyboard=None):
     vk.method('messages.send',{id_type: id, 'message': message, 'random_id': random.randint(-2147483647, 2147483647), 'keyboard': keyboard})
 
 def get_name(id):
-    user = vk.method("users.get", {"user_ids": id})  # вместо 1 подставляете айди нужного юзера
+    user = vk.method("users.get", {"user_ids": id}) 
     fullname = user[0]['first_name'] + ' ' + user[0]['last_name']
     return fullname
 
