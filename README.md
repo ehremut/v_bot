@@ -8,5 +8,3 @@ Ver.2:
                     -complexity,
                     -scope of discussion
                     -format of the topic
-  
-
