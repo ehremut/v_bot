@@ -15,7 +15,7 @@ class VkBot():
     def message(self,response,keyboard):
         themes = ['социальная сфера', 'политика', 'экономика', 'наркотики', 'феминизм', 'международные отношения', \
                   'спорт', 'сми', 'мигранты', 'религия', 'этика']
-        if response == "поехали" or response == "заново":
+        if response == "поехали" or response == "start" or response == "начать" or response == "заново":
             self.send = {'lang': '', 'level': '', 'format': '', 'discus': ''}
             self.steps = {1: False, 2: False, 3: False, 4: False, 5: False}
             return [ 'user_id', self.user_id, 'Хочешь сам выбрать или доверишься мне?', keyboard]
