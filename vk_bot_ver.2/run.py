@@ -38,6 +38,8 @@ def run():
                     bb = users_bot[event.user_id].message(response, keyboard)
                     print(users_bot[event.user_id].send)
                     print(users_bot[event.user_id].steps)
+                    if bb == None:
+                        continue
                     if len(bb) == 4 :
                         send_message(vk,bb[0], bb[1],message=bb[2], keyboard=bb[3])
                     elif len(bb) == 3:
