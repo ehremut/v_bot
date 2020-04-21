@@ -128,12 +128,6 @@ class VkBot():
         #     return ('user_id', self.user_id, 'Закрыть', keyboard)
 
 
-
-        else:
-            return ('user_id', self.user_id, 'Мне нечего тебе на это ответить\n \
-                                             Пользуйся кнопочками, они для тебя\n \
-                                            Если хочешь найти тему, то напиши поехали')
-
     def get_theme(self, send):
         client = MongoClient("mongodb://127.0.0.1:27017")
         db = client.dbThemes
