@@ -8,7 +8,7 @@ class Keyboard():
                       'спорт', 'сми', 'мигранты', 'религия', 'этика']
         keyboard = VkKeyboard(one_time=False)
 
-        if response == 'поехали' or response == 'заново':
+        if response == 'поехали' or response == 'заново' or response == 'начать' or response == 'start':
             keyboard.add_button('Выбрать тему', color=VkKeyboardColor.POSITIVE)
             keyboard.add_line()  # Переход на вторую строку
             keyboard.add_button('Случайная тема', color=VkKeyboardColor.NEGATIVE)
